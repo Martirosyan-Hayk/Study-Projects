@@ -19,7 +19,7 @@ import { UserModule } from './users/user.module';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      synchronize: true,
+      synchronize: false,
       subscribers: [UserSubscriber],
       entities: [UserEntity],
       migrations: ['src/migrations/*{.ts,.js}'],
