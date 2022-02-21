@@ -1,0 +1,20 @@
+NUM num = 10
+STRING str  = " Hello " + " Worls "
+
+NUM num1 = 11
+
+PRINT / " Vacho " / ENDL / " Hayko " ;
+LOOP / num <= num1 /
+[
+    PRINT / str / ENDL ;
+    num = num + 1
+]
+
+IF / num < num1 /
+[
+    PRINT / num ;
+]
+ELSE
+[
+    PRINT / " num is not 12 " / ENDL ;
+]

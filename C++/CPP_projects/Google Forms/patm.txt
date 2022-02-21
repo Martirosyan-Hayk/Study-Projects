@@ -1,0 +1,12 @@
+1)    tigran meci karavarman taretver@
+          a)    qa 74-55
+          b)    qa 95-95
+          c)    qa 55-34
+$a
+2)    araji hanrapetutyan taretver@
+          a)    1991 septemberi 21
+          b)    1992 septemberi 23
+          c)    1918 maisi 289
+          d)    1918 mayisi 28
+          e)    1920 hoktemberi 1
+$c

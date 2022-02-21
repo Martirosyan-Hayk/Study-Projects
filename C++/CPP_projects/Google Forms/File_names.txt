@@ -1,0 +1,5 @@
+matem.txt
+maf.txt
+mak.txt
+kam.txt
+patm.txt
