@@ -23,7 +23,7 @@ public:
 	Bitset<N> operator|(const Bitset<N>& rhs);
 	Bitset<N> operator^(const Bitset<N>& rhs);
 	Bitset<N>& operator<<=(std::size_t pos);     
-    Bitset<N>& operator>>=(std::size_t pos);
+    	Bitset<N>& operator>>=(std::size_t pos);
 public:
 	Bitset<N>& set();
 	Bitset<N> & set(std::size_t pos, bool value = true);
