@@ -1,0 +1,13 @@
+# IDE Folders and Files
+.idea
+.DS_Store
+
+
+.github
+go.sum
+microservices
+config.json
+
+microservices-go
+
+

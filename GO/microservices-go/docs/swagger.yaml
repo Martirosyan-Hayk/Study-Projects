@@ -1,0 +1,141 @@
+basePath: /v1
+definitions:
+  medicine.MessageResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  medicine.NewMedicineRequest:
+    properties:
+      description:
+        example: Something
+        type: string
+      ean_code:
+        example: "122000000021"
+        type: string
+      laboratory:
+        example: Roche
+        type: string
+      name:
+        example: Paracetamol
+        type: string
+    required:
+    - description
+    - ean_code
+    - laboratory
+    - name
+    type: object
+  models.Medicine:
+    properties:
+      created_at:
+        example: "2021-02-24 20:19:39"
+        type: string
+      description:
+        example: Some Description
+        type: string
+      ean_code:
+        example: "9900000124"
+        type: string
+      id:
+        example: 123
+        type: integer
+      laboratory:
+        example: Roche
+        type: string
+      name:
+        example: Paracetamol
+        type: string
+      updated_at:
+        example: "2021-02-24 20:19:39"
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: gbrayhan@gmail.com
+    name: Alejandro Gabriel Guerrero
+    url: http://github.com/gbrayhan
+  description: Documentation's Boilerplate Golang
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Boilerplate Golang
+  version: "1.0"
+paths:
+  /medicine:
+    get:
+      description: Get all Medicines on the system
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Medicine'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+      summary: Get all Medicines
+      tags:
+      - medicine
+    post:
+      consumes:
+      - application/json
+      description: Create new medicine on the system
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/medicine.NewMedicineRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Medicine'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+      summary: Create New Medicine
+      tags:
+      - medicine
+  /medicine/{medicine_id}:
+    get:
+      description: Get Medicines by ID on the system
+      parameters:
+      - description: id of medicine
+        in: path
+        name: medicine_id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Medicine'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/medicine.MessageResponse'
+      summary: Get medicines by ID
+      tags:
+      - medicine
+swagger: "2.0"

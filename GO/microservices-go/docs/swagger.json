@@ -1,0 +1,206 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation's Boilerplate Golang",
+        "title": "Boilerplate Golang",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Alejandro Gabriel Guerrero",
+            "url": "http://github.com/gbrayhan",
+            "email": "gbrayhan@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/v1",
+    "paths": {
+        "/medicine": {
+            "get": {
+                "description": "Get all Medicines on the system",
+                "tags": [
+                    "medicine"
+                ],
+                "summary": "Get all Medicines",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Medicine"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new medicine on the system",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "medicine"
+                ],
+                "summary": "Create New Medicine",
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/medicine.NewMedicineRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Medicine"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/medicine/{medicine_id}": {
+            "get": {
+                "description": "Get Medicines by ID on the system",
+                "tags": [
+                    "medicine"
+                ],
+                "summary": "Get medicines by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of medicine",
+                        "name": "medicine_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Medicine"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/medicine.MessageResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "medicine.MessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "medicine.NewMedicineRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "ean_code",
+                "laboratory",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "Something"
+                },
+                "ean_code": {
+                    "type": "string",
+                    "example": "122000000021"
+                },
+                "laboratory": {
+                    "type": "string",
+                    "example": "Roche"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Paracetamol"
+                }
+            }
+        },
+        "models.Medicine": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string",
+                    "example": "2021-02-24 20:19:39"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Some Description"
+                },
+                "ean_code": {
+                    "type": "string",
+                    "example": "9900000124"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 123
+                },
+                "laboratory": {
+                    "type": "string",
+                    "example": "Roche"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Paracetamol"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "example": "2021-02-24 20:19:39"
+                }
+            }
+        }
+    }
+}
