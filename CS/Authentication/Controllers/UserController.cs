@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Authentication.Data;
-using Authentication.Modules;
+using Authentication.Modules.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,8 +25,6 @@ namespace Authentication.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            Console.WriteLine("UserController GetAll action");
-
             return Ok(await _dbContext.Users.ToListAsync());
         }
 

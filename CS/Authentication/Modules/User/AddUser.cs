@@ -1,4 +1,5 @@
-namespace Authentication.Modules {
+namespace Authentication.Modules.User 
+{
     public class AddUser{
 
         public string Name { get; set; }
